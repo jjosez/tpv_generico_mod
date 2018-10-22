@@ -121,8 +121,10 @@ class tpv_recambios extends fbase_controller
                     } else if (isset($_GET['terminal'])) {
                         $this->terminal = $terminal0->get($_GET['terminal']);
                         if ($this->terminal) {
-                            $this->terminal->abrir_cajon();
-                            $this->terminal->save();
+                            //$this->terminal->abrir_cajon();
+                            //$this->terminal->save();
+                            fs_terminal_abrir_cajon($this->terminal);
+                            $this->imprimiendo = true;
                         } else {
                             $this->new_error_msg('Terminal no encontrado.');
                         }
@@ -554,8 +556,10 @@ class tpv_recambios extends fbase_controller
     private function abrir_caja()
     {
         if ($this->terminal) {
-            $this->terminal->abrir_cajon();
-            $this->terminal->save();
+            //$this->terminal->abrir_cajon();
+            //$this->terminal->save();
+            fs_terminal_abrir_cajon($this->terminal);
+            $this->imprimiendo = true;
         } else {
             $this->new_error_msg('Terminal no encontrado.');
         }
