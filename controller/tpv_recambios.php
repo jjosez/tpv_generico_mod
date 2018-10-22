@@ -123,8 +123,8 @@ class tpv_recambios extends fbase_controller
                         if ($this->terminal) {
                             //$this->terminal->abrir_cajon();
                             //$this->terminal->save();
-                            fs_terminal_abrir_cajon($this->terminal);
-                            $this->imprimiendo = true;
+                            fs_abrir_cajon($this->terminal);
+                            $this->imprimiendo = 'drawer';
                         } else {
                             $this->new_error_msg('Terminal no encontrado.');
                         }
@@ -524,7 +524,7 @@ class tpv_recambios extends fbase_controller
 
                             /// Mandar impresion usando el plugin print_to_ticket.
                             fs_print_job('factura', $factura->idfactura, $this->terminal, $this->empresa, true);
-                            $this->imprimiendo = true;
+                            $this->imprimiendo = 'factura';
                         }
 
                         /// actualizamos la caja
@@ -558,8 +558,8 @@ class tpv_recambios extends fbase_controller
         if ($this->terminal) {
             //$this->terminal->abrir_cajon();
             //$this->terminal->save();
-            fs_terminal_abrir_cajon($this->terminal);
-            $this->imprimiendo = true;
+            fs_abrir_cajon($this->terminal);
+            $this->imprimiendo = 'drawer';
         } else {
             $this->new_error_msg('Terminal no encontrado.');
         }
@@ -616,7 +616,7 @@ class tpv_recambios extends fbase_controller
             
             /// Mandar impresion usando el plugin print_to_ticket.
             fs_print_job('factura', $fac0->idfactura, $this->terminal, $this->empresa);
-            $this->imprimiendo = true;
+            $this->imprimiendo = 'factura';
         } else {
             $this->new_error_msg("Ticket no encontrado.");
         }
